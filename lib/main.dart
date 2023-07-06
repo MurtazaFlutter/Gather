@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gather_app/provider/page_controller.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/login_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: ((context) => PageProvider()))
+    ],
+    child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

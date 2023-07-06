@@ -12,28 +12,31 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: false,
-      style: TextStyle(
-              color: kBlackColor,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
-            ),
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle:TextStyle(
-              color: kBlackColor,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
-            ),
-            focusedBorder:OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.r)
-            ) ,
-            border:  OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.r)
-            )
+    return SizedBox(
+      height: 50.h,
+      child: TextFormField(
+        obscureText: false,
+        style: TextStyle(
+                color: kBlackColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w400,
+              ),
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle:TextStyle(
+                color: kBlackColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              focusedBorder:OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.r)
+              ) ,
+              border:  OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.r)
+              )
+        ),
+    
       ),
-
     );
   }
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:gather_app/provider/page_controller.dart';
 import 'package:gather_app/widgets/text_widget.dart';
+import 'package:provider/provider.dart';
 import '../utils/colors.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/default_button.dart';
@@ -28,8 +30,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     _tabController.dispose();
     super.dispose();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -112,39 +112,169 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-      int _selectedSchoolIndex = -1;
+ // int _selectedSchoolIndex = -1;
+  // int _currentPageIndex = 0;
+ //  final PageController _pageController = PageController();
 
-  void _handleSchoolSelection(int index) {
-    setState(() {
-      _selectedSchoolIndex = index;
-    });
-  }
+  // void _handleSchoolSelection(int index) {
+  //   setState(() {
+  //     _selectedSchoolIndex = index;
+  //   });
+  // }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final page = Provider.of<PageProvider>(context);
+    return PageView.builder(
+                  controller: page.pageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return _buildPageContent(index);
+                  },
+                );
+    //  Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   crossAxisAlignment: CrossAxisAlignment.stretch,
+    //   children: [
+    //     Center(child: TextWidget(title: 'Select your School', size: 16.sp)),
+    //     Gap(30.h),
+    //     SelectSchoolBox(
+    //       isSelected: _selectedSchoolIndex == 0,
+    //       onTap: () => _handleSchoolSelection(0),
+    //       schoolTitle: 'Texas A&M University',
+    //     ),
+    //     Gap(15.h),
+    //     SelectSchoolBox(
+    //       onTap: () => _handleSchoolSelection(1),
+    //       isSelected: _selectedSchoolIndex == 1,
+    //       schoolTitle: 'Other School',
+    //     ),
+    //     const Spacer(flex: 2,),
+    //     DefaultButton(
+    //       text: 'Next',
+    //       onPressed: _handleNextButton,
+    //     ),
+    //     const Spacer(),
+    //     Expanded(
+    //       child: _selectedSchoolIndex == 0
+    //           ? PageView.builder(
+    //               controller: _pageController,
+    //               physics: const NeverScrollableScrollPhysics(),
+    //               itemCount: _getPageCount(),
+    //               itemBuilder: (context, index) {
+    //                 return _buildPageContent(index);
+    //               },
+    //             )
+    //           : Container(),
+    //     ),
+    //   ],
+    // );
+  }
+
+  Widget _buildPageContent(int index) {
+      final page = Provider.of<PageProvider>(context);
+    if ( page.currentPageIndex > 0 && index == 0) {
+      return Container();
+    } else if (index == page.currentPageIndex) {
+      return _buildCurrentPageContent(index);
+    } else {
+      return Container();
+    }
+  }
+
+  Widget _buildCurrentPageContent(int index) {
+      final page = Provider.of<PageProvider>(context);
+    // Build the content for each page based on the index
+    if (index == page.currentPageIndex) {
+      if (index == 0) {
+        return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Center(child: TextWidget(title: 'Select your School',  size: 16.sp)),
+        Center(child: TextWidget(title: 'Select your School', size: 16.sp)),
         Gap(30.h),
-         SelectSchoolBox(
-          isSelected: _selectedSchoolIndex == 0,
-          onTap: () => _handleSchoolSelection(0),
+        SelectSchoolBox(
+          isSelected: page.selectedSchoolIndex == 0,
+          onTap: () => page.handleSection(0),
           schoolTitle: 'Texas A&M University',
         ),
         Gap(15.h),
-          SelectSchoolBox(
-            onTap: () => _handleSchoolSelection(1) ,
-            isSelected: _selectedSchoolIndex == 1,
+        SelectSchoolBox(
+          onTap: () => page.handleSection(1),
+          isSelected: page.selectedSchoolIndex == 1,
           schoolTitle: 'Other School',
         ),
         const Spacer(flex: 2,),
-        DefaultButton(text: 'Next', onPressed: () {}),
+        DefaultButton(
+          text: 'Next',
+          onPressed: () => page.handleNextButton(),
+        ),
         const Spacer(),
+        // Expanded(
+        //   child: _selectedSchoolIndex == 0
+        //       ? PageView.builder(
+        //           controller: _pageController,
+        //           physics: const NeverScrollableScrollPhysics(),
+        //           itemCount: _getPageCount(),
+        //           itemBuilder: (context, index) {
+        //             return _buildPageContent(index);
+        //           },
+        //         )
+        //       : Container(),
+        // ),
       ],
     );
+      } else if (index == 1) {
+        return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Center(child: TextWidget(title: 'Student or an Organization', size: 16.sp)),
+        Gap(30.h),
+        SelectSchoolBox(
+          isSelected: page.selectedSchoolIndex == 0,
+          onTap: () => page.handleSection(0),
+          schoolTitle: 'Student',
+        ),
+        Gap(15.h),
+        SelectSchoolBox(
+          onTap: () => page.handleSection(1),
+          isSelected: page.selectedSchoolIndex == 1,
+          schoolTitle: 'Organization',
+        ),
+        const Spacer(flex: 2,),
+        DefaultButton(
+          text: 'Next',
+          onPressed: () => page.handleNextButton(),
+        ),
+        const Spacer(),
+        // Expanded(
+        //   child: _selectedSchoolIndex == 0
+        //       ? PageView.builder(
+        //           controller: _pageController,
+        //           physics: const NeverScrollableScrollPhysics(),
+        //           itemCount: _getPageCount(),
+        //           itemBuilder: (context, index) {
+        //             return _buildPageContent(index);
+        //           },
+        //         )
+        //       : Container(),
+        // ),
+      ],
+    );
+      } else {
+        return Text('Additional Page ${index + 1}');
+      }
+    } else {
+      return Container();
+    }
   }
 }
+
+
 
 class SelectSchoolBox extends StatelessWidget {
   final String schoolTitle;
@@ -223,8 +353,3 @@ class LoginTab extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
