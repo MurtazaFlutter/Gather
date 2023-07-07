@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Gather App',
           theme: ThemeData(
-            scaffoldBackgroundColor: const Color(0xffEFF3F5),
+            scaffoldBackgroundColor: kScaffoldColor,
             colorScheme: ColorScheme.fromSeed(seedColor: kDefaultColor),
             useMaterial3: true,
           ),
