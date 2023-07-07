@@ -46,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 SvgPicture.asset("assets/Gather.svg"),
                  Gap(40.h),
                 TabBar(
+                  dividerColor: Colors.transparent,
                   indicatorColor: kDefaultColor,
                   controller: _tabController,
                   tabs: [
