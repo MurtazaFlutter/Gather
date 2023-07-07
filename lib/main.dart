@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gather_app/provider/page_controller.dart';
+import 'package:gather_app/controllers/main_screen_notifier.dart';
+import 'package:gather_app/controllers/page_controller.dart';
+import 'package:gather_app/screens/mainscreen/main_screen.dart';
+import 'package:gather_app/utils/colors.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/login_screen.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: ((context) => PageProvider()))
+      ChangeNotifierProvider(create: ((context) => PageProvider())),
+      ChangeNotifierProvider(create: ((context) => MainScreenNotifier())),
     ],
     child: const MyApp()));
 }
@@ -16,7 +18,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -26,13 +27,13 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'Gather App',
           theme: ThemeData(
-           
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            scaffoldBackgroundColor: const Color(0xffEFF3F5),
+            colorScheme: ColorScheme.fromSeed(seedColor: kDefaultColor),
             useMaterial3: true,
           ),
-          home: const LoginScreen(),
+          home:  MainScreen(),
         );
       }
     );
