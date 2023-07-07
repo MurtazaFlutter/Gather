@@ -59,14 +59,12 @@ class SettingsScreen extends StatelessWidget {
                ListTile(
                 leading: const Icon(Icons.chat_bubble),
                 title: TextWidget(title: "Settings", size: 14.sp, color: kGreyColor,),
-                trailing: Switch
-                ( value: false, onChanged: (value) {}),
+               trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios))
               ),
                ListTile(
                 leading: const Icon(Icons.warning),
                 title: TextWidget(title: "About", size: 14.sp, color: kGreyColor,),
-                trailing: Switch
-                ( value: false, onChanged: (value) {}),
+                trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios))
               ),
       
           ],
