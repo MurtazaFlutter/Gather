@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gather_app/screens/favourite_screen.dart';
-import 'package:gather_app/screens/mainscreen/profile_screen.dart';
+import 'package:gather_app/screens/profilescreen/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/main_screen_notifier.dart';
 import '../home_screen.dart';
