@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../utils/colors.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/default_button.dart';
+import 'mainscreen/main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,66 +37,58 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 35.w, vertical: 53.h),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset("assets/Gather.svg"),
-                 Gap(40.h),
-                TabBar(
-                  dividerColor: Colors.transparent,
-                  indicatorColor: kDefaultColor,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.w, vertical: 120.h),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset("assets/Gather.svg"),
+              Gap(100.h),
+              TabBar(
+                dividerColor: Colors.transparent,
+                indicatorColor: kDefaultColor,
+                controller: _tabController,
+                tabs: [
+                  Tab(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          color: const Color(0xff1D2226),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Signup',
+                        style: TextStyle(
+                          color: const Color(0xff1D2226),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            Gap(20.h),
+              Expanded(
+                child: TabBarView(
                   controller: _tabController,
-                  tabs: [
-                    SizedBox(
-                      width: 130.w,
-                      child: Tab(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              color: const Color(0xff1D2226),
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 130.w,
-                      child: Tab(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Signup',
-                            style: TextStyle(
-                              color: const Color(0xff1D2226),
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  children: const [
+                  LoginTab(),
+                  SignUp()
                   ],
                 ),
-              Gap(20.h),
-                Expanded(
-                  child: TabBarView(
-                    controller: _tabController,
-                    children: const [
-                    LoginTab(),
-                    SignUp()
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -228,8 +221,6 @@ class SelectSchoolBox extends StatelessWidget {
   }
 }
 
-
-
 class LoginTab extends StatelessWidget {
   const LoginTab({
     super.key,
@@ -237,39 +228,43 @@ class LoginTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const CustomTextField(
-          hintText: 'Email Address',
-        ),
-        Gap(15.h),
-        const CustomTextField(
-          hintText: 'Password',
-        ),
-        Gap(35.h),
-        DefaultButton(
-          onPressed: () {
-          },
-          text: 'LOGIN',
-        ),
-        Gap(15.h),
-        Center(child: TextWidget(title: 'Forgot Password?', weight: FontWeight.w400, color: kDefaultColor, size: 14.sp)),
-        Gap(35.h),
-        SvgPicture.asset('assets/social login.svg'),
-        Gap(25.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextWidget(title: 'Don\'t have an account? ', weight: FontWeight.w400, color: const Color(0xff1D1D28), size: 12.sp),
-             TextWidget(title: 'Create one now!', weight: FontWeight.w400, color: kDefaultColor, size: 12.sp),
-          ],
-        )
-
-
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Gap(30.h),
+          const CustomTextField(
+            hintText: 'Email Address',
+          ),
+          Gap(15.h),
+          const CustomTextField(
+            hintText: 'Password',
+          ),
+          Gap(35.h),
+          DefaultButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: ((context) => MainScreen())));
+            },
+            text: 'LOGIN',
+          ),
+          Gap(15.h),
+          Center(child: TextWidget(title: 'Forgot Password?', weight: FontWeight.w400, color: kDefaultColor, size: 14.sp)),
+          Gap(35.h),
+          SvgPicture.asset('assets/social login.svg'),
+          Gap(25.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TextWidget(title: 'Don\'t have an account? ', weight: FontWeight.w400, color: const Color(0xff1D1D28), size: 12.sp),
+               TextWidget(title: 'Create one now!', weight: FontWeight.w400, color: kDefaultColor, size: 12.sp),
+            ],
+          )
+    
+    
+        ],
+      ),
     );
   }
 }

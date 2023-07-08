@@ -22,9 +22,13 @@ class CustomTextField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
         decoration: InputDecoration(
+          contentPadding: 
+           EdgeInsets.only(left: 25.w,),
+          filled: true,
+          fillColor: kScaffoldColor,
           hintText: hintText,
           hintStyle:TextStyle(
-                color: kBlackColor,
+                color: kGreyColor,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
               ),
