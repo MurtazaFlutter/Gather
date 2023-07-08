@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:gather_app/widgets/text_widget.dart';
 
+import 'post_detail_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -71,7 +73,9 @@ class InvolvedPosts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: ((context) => const PostDetailScreen())));
+      },
       child: ListView.builder(
        physics: const BouncingScrollPhysics(),
         shrinkWrap: true,

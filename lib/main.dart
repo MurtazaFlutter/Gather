@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Gather App',
           theme: ThemeData(
+            applyElevationOverlayColor:true ,
+           checkboxTheme: const CheckboxThemeData(),
             scaffoldBackgroundColor: kScaffoldColor,
             colorScheme: ColorScheme.fromSeed(seedColor: kDefaultColor),
             useMaterial3: true,
