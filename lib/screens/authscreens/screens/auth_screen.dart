@@ -7,9 +7,9 @@ import 'package:gather_app/screens/authscreens/widgets/other_school.dart';
 import 'package:gather_app/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/colors.dart';
-import '../../../widgets/custom_text_field.dart';
 import '../../../widgets/default_button.dart';
-import '../../mainscreen/main_screen.dart';
+import 'login_tab_screen.dart';
+import 'student_form_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -44,9 +44,9 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Gap(120.h),
-              SvgPicture.asset("assets/Gather.svg"),
               Gap(100.h),
+              SvgPicture.asset("assets/Gather.svg"),
+              Gap(80.h),
               TabBar(
                 dividerColor: Colors.transparent,
                 indicatorColor: kDefaultColor,
@@ -162,7 +162,6 @@ class _SignUpState extends State<SignUp> {
           onTap: () => page.handleSection(0),
           schoolTitle: 'Student',
         ),
-        
         Gap(15.h),
         SelectSchoolBox(
           onTap: () => page.handleSection(1),
@@ -217,106 +216,6 @@ class SelectSchoolBox extends StatelessWidget {
           child: TextWidget(title: schoolTitle, size: 16.sp, color: isSelected ? Colors.white : kBlackColor,),
         ),
       ),
-    );
-  }
-}
-
-class LoginTab extends StatelessWidget {
-  const LoginTab({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Gap(30.h),
-          const CustomTextField(
-            hintText: 'Email Address',
-          ),
-          Gap(15.h),
-          const CustomTextField(
-            hintText: 'Password',
-          ),
-          Gap(35.h),
-          DefaultButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: ((context) => MainScreen())));
-            },
-            text: 'LOGIN',
-          ),
-          Gap(15.h),
-          Center(child: TextWidget(title: 'Forgot Password?', weight: FontWeight.w400, color: kDefaultColor, size: 14.sp)),
-          Gap(35.h),
-          SvgPicture.asset('assets/social login.svg'),
-          Gap(25.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextWidget(title: 'Don\'t have an account? ', weight: FontWeight.w400, color: const Color(0xff1D1D28), size: 12.sp),
-               TextWidget(title: 'Create one now!', weight: FontWeight.w400, color: kDefaultColor, size: 12.sp),
-            ],
-          )
-    
-    
-        ],
-      ),
-    );
-  }
-}
-
-
-class StudentForm extends StatelessWidget {
-  const StudentForm({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Center(child: TextWidget(title: "Hi there!", size: 16.sp)),
-        Gap(20.h),
-        const CustomTextField(hintText: "Username"),
-        Gap(8.h),
-        const CustomTextField(hintText: "Name"),
-        Gap(8.h),
-        const CustomTextField(hintText: "Email Address"),
-        Gap(8.h),
-        const CustomTextField(hintText: "Password"),
-        Gap(8.h),
-        const CustomTextField(hintText: "Confirm Password"),
-        Gap(8.h),
-         const CustomTextField(hintText: "Major"),
-        Gap(8.h),
-        Gap(25.h),
-        DefaultButton(text: "Welcome to Gather!", onPressed: () {}),
-        Gap(10.h),
-         Center(
-           child: Text.rich(TextSpan(
-            children: [
-               TextSpan(
-                text: 'By signing up, you are agree with our ',
-                 style: TextStyle(
-                  fontSize: 12.sp,
-                 
-                )
-              ),
-              TextSpan(
-                text: 'Terms & Conditions',
-                style: TextStyle(
-                  fontSize: 12.sp,
-                   decoration: TextDecoration.underline,
-                  color: kDefaultColor,
-                  
-                )
-              ),
-            ]
-                 )),
-         )
-      ],
     );
   }
 }
