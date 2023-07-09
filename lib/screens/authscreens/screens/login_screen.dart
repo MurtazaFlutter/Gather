@@ -3,21 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:gather_app/controllers/page_controller.dart';
+import 'package:gather_app/screens/authscreens/widgets/other_school.dart';
 import 'package:gather_app/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
-import '../utils/colors.dart';
-import '../widgets/custom_text_field.dart';
-import '../widgets/default_button.dart';
-import 'mainscreen/main_screen.dart';
+import '../../../utils/colors.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/default_button.dart';
+import '../../mainscreen/main_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -38,11 +39,12 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       length: 2,
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 35.w, vertical: 120.h),
+          padding: EdgeInsets.symmetric(horizontal: 35.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Gap(120.h),
               SvgPicture.asset("assets/Gather.svg"),
               Gap(100.h),
               TabBar(
@@ -113,7 +115,6 @@ class _SignUpState extends State<SignUp> {
     return PageView.builder(
                   controller: page.pageController,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 3,
                   itemBuilder: (context, index) {
                     return _buildCurrentPageContent(index);
                   },
@@ -122,7 +123,6 @@ class _SignUpState extends State<SignUp> {
 
   Widget _buildCurrentPageContent(int index) {
       final page = Provider.of<PageProvider>(context);
-    // Build the content for each page based on the index
     if (index == page.currentPageIndex) {
       if (index == 0) {
         return Column(
@@ -145,7 +145,7 @@ class _SignUpState extends State<SignUp> {
         const Spacer(flex: 2,),
         DefaultButton(
           text: 'Next',
-          onPressed: () => page.handleNextButton(),
+          onPressed: () => page.selectedSectionIndex == 1 ?  Navigator.push(context, MaterialPageRoute(builder: (context) => const YourSchool())) : page.handleNextButton(),
         ),
         const Spacer(),
       ],
@@ -162,6 +162,7 @@ class _SignUpState extends State<SignUp> {
           onTap: () => page.handleSection(0),
           schoolTitle: 'Student',
         ),
+        
         Gap(15.h),
         SelectSchoolBox(
           onTap: () => page.handleSection(1),
@@ -171,22 +172,21 @@ class _SignUpState extends State<SignUp> {
         const Spacer(flex: 2,),
         DefaultButton(
           text: 'Next',
-          onPressed: () => page.handleNextButton(),
+          onPressed: () => page.selectedSectionIndex == 1 ? PageView.builder(itemBuilder: ((context, index) => Column(
+            children: [
+              const Text("data"),
+              DefaultButton(text: "text", onPressed: () => page.handleNextButton())
+            ],
+          ))) :page.handleNextButton(),
         ),
         const Spacer(),
       ],
     );
-      } else {
-      return  const Text("data");
-       // return const StudentForm();
-       // return Text('Additional Page ${index + 1}');
-      }
-    } else {
-      return const SizedBox();
+      } 
     }
+    return const StudentForm();
   }
 }
-
 
 
 class SelectSchoolBox extends StatelessWidget {

@@ -28,43 +28,43 @@ class PageProvider extends ChangeNotifier {
 //   notifyListeners();
 // }
 
-handleNextButton() {
-  if (_currentPageIndex == 0 && _selectedSectionIndex == 0) {
-    _currentPageIndex++;
-    _pageController.animateToPage(
-      _currentPageIndex,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  } else if (_currentPageIndex == 1) {
-    // Handle the logic for the second page next button click
-    _currentPageIndex++;
-    _pageController.animateToPage(
-      _currentPageIndex,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  } else {
-    // Handle the logic for the last page next button click
-  }
-  notifyListeners();
-}
+// handleNextButton() {
+//   if (_currentPageIndex == 0 && _selectedSectionIndex == 0) {
+//     _currentPageIndex++;
+//     _pageController.animateToPage(
+//       _currentPageIndex,
+//       duration: const Duration(milliseconds: 300),
+//       curve: Curves.easeInOut,
+//     );
+//   } else if (_currentPageIndex == 1) {
+//     // Handle the logic for the second page next button click
+//     _currentPageIndex++;
+//     _pageController.animateToPage(
+//       _currentPageIndex,
+//       duration: const Duration(milliseconds: 300),
+//       curve: Curves.easeInOut,
+//     );
+//   } else {
+//     // Handle the logic for the last page next button click
+//   }
+//   notifyListeners();
+// }
 
 
 
-  //   handleNextButton() {
-  //   if (_selectedSectionIndex == 0) {
+    handleNextButton() {
+    if (_selectedSectionIndex == 0) {
 
-  //     _currentPageIndex ++;
+      _currentPageIndex ++;
      
-  //     _pageController.animateToPage(
-  //       _currentPageIndex,
-  //       duration: const Duration(milliseconds: 300),
-  //       curve: Curves.easeInOut,
-  //     );
-  //   } else {
-  //   }
-  //   notifyListeners();
-  // }
+      _pageController.animateToPage(
+        _currentPageIndex,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+    }
+    notifyListeners();
+  }
 
 }

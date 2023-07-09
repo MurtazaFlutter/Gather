@@ -15,50 +15,47 @@ class BottomBar extends StatelessWidget {
     return Consumer<MainScreenNotifier>(
         builder: (context, mainScreenNotifier, child) {
       return SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 30),
-          child: Container(
-            height: 62.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.r)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                BottomNavBarIcons(
+        child: Container(
+          height: 62.h,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20.r)
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              BottomNavBarIcons(
+                onTap: () {
+                  mainScreenNotifier.pageIndex = 0;
+                },
+                iconData: mainScreenNotifier.pageIndex == 0
+                    ? MaterialCommunityIcons.home
+                    : MaterialCommunityIcons.home_outline,
+              ),
+              BottomNavBarIcons(
                   onTap: () {
-                    mainScreenNotifier.pageIndex = 0;
+                    mainScreenNotifier.pageIndex = 1;
                   },
-                  iconData: mainScreenNotifier.pageIndex == 0
-                      ? MaterialCommunityIcons.home
-                      : MaterialCommunityIcons.home_outline,
-                ),
-                BottomNavBarIcons(
-                    onTap: () {
-                      mainScreenNotifier.pageIndex = 1;
-                    },
-                    iconData: mainScreenNotifier.pageIndex == 1
-                        ? Ionicons.search
-                        : Ionicons.search_outline
-                    ),
-                BottomNavBarIcons(
-                    onTap: () {
-                      mainScreenNotifier.pageIndex = 2;
-                    },
-                    iconData: mainScreenNotifier.pageIndex == 2
-                        ? Ionicons.heart
-                        : Ionicons.heart_outline),
-                
-                BottomNavBarIcons(
-                    onTap: () {
-                      mainScreenNotifier.pageIndex = 3;
-                    },
-                    iconData: mainScreenNotifier.pageIndex == 3
-                        ? Ionicons.person
-                        : Ionicons.person_outline),
-              ],
-            ),
+                  iconData: mainScreenNotifier.pageIndex == 1
+                      ? Ionicons.search
+                      : Ionicons.search_outline
+                  ),
+              BottomNavBarIcons(
+                  onTap: () {
+                    mainScreenNotifier.pageIndex = 2;
+                  },
+                  iconData: mainScreenNotifier.pageIndex == 2
+                      ? Ionicons.heart
+                      : Ionicons.heart_outline),
+              
+              BottomNavBarIcons(
+                  onTap: () {
+                    mainScreenNotifier.pageIndex = 3;
+                  },
+                  iconData: mainScreenNotifier.pageIndex == 3
+                      ? Ionicons.person
+                      : Ionicons.person_outline),
+            ],
           ),
         ),
       );
