@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
-import '../../../utils/colors.dart';
-import '../../../widgets/custom_text_field.dart';
-import '../../../widgets/default_button.dart';
-import '../../../widgets/text_widget.dart';
+import '../../../utils/imports.dart';
 
 class StudentForm extends StatelessWidget {
   final VoidCallback onPressed;
@@ -29,7 +23,9 @@ class StudentForm extends StatelessWidget {
          const CustomTextField(hintText: "Major"),
         Gap(8.h),
         Gap(25.h),
-        DefaultButton(text: "Welcome to Gather!", onPressed: () {}),
+        DefaultButton(text: "Welcome to Gather!", onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: ((context) => MainScreen())));
+        }),
         Gap(10.h),
          Center(
            child: Text.rich(TextSpan(

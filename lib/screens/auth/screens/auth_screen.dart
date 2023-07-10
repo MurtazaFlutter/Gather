@@ -1,15 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
-import 'package:gather_app/controllers/page_controller.dart';
-import 'package:gather_app/screens/auth/widgets/other_school.dart';
-import 'package:gather_app/widgets/text_widget.dart';
-import 'package:provider/provider.dart';
-import '../../../utils/colors.dart';
-import '../../../widgets/default_button.dart';
+import 'package:flutter_svg/svg.dart';
+import '../../../utils/imports.dart';
+import '../widgets/other_school.dart';
 import 'login_tab_screen.dart';
-import 'student_form_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});

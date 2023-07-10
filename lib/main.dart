@@ -1,6 +1,4 @@
-import 'package:provider/provider.dart';
-import 'controllers/main_screen_notifier.dart';
-import 'controllers/page_controller.dart';
+import 'package:gather_app/screens/auth/screens/auth_screen.dart';
 import 'utils/imports.dart';
 
 void main() {
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: kDefaultColor),
             useMaterial3: true,
           ),
-          home: const SearchScreen(),
+          home: const AuthScreen(),
           
         );
       }
