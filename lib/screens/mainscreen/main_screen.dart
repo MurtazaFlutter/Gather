@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:gather_app/screens/favourite_screen.dart';
-import 'package:gather_app/screens/profilescreen/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/main_screen_notifier.dart';
-import '../homescreen/screens/home_screen.dart';
-import '../search_screen.dart';
+import '../../utils/imports.dart';
 import 'widgets/bottom_bar.dart';
 
 class MainScreen extends StatelessWidget {

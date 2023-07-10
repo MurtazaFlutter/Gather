@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../utils/colors.dart';
+import '../utils/imports.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
@@ -13,7 +11,7 @@ class SearchTextField extends StatelessWidget {
       height: 44.h,
       decoration:  BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(30.r)
+        borderRadius: BorderRadius.circular(20.r)
       ),
       child: TextFormField(
         obscureText: false,

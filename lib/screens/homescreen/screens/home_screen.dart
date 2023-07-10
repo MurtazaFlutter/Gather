@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
-import 'package:gather_app/widgets/text_widget.dart';
-
+import '../../../utils/imports.dart';
 import 'post_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {

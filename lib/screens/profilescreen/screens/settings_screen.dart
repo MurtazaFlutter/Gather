@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
-import '../../../utils/colors.dart';
-import '../../../widgets/text_widget.dart';
+import '../../../utils/imports.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

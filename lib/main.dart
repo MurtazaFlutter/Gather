@@ -1,11 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gather_app/controllers/main_screen_notifier.dart';
-import 'package:gather_app/controllers/page_controller.dart';
-import 'package:gather_app/screens/authscreens/screens/auth_screen.dart';
-import 'package:gather_app/utils/colors.dart';
 import 'package:provider/provider.dart';
-
+import 'controllers/main_screen_notifier.dart';
+import 'controllers/page_controller.dart';
+import 'utils/imports.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -36,7 +32,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: kDefaultColor),
             useMaterial3: true,
           ),
-          home: const AuthScreen(),
+          home: const SearchScreen(),
           
         );
       }
