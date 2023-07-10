@@ -106,86 +106,96 @@ class SignUp extends StatefulWidget {
   @override
   State<SignUp> createState() => _SignUpState();
 }
-
 class _SignUpState extends State<SignUp> {
+  bool isStudentSelected = true;
 
   @override
   Widget build(BuildContext context) {
     final page = Provider.of<PageProvider>(context);
     return PageView.builder(
-                  controller: page.pageController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return _buildCurrentPageContent(index);
-                  },
-                );
+      controller: page.pageController,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return _buildCurrentPageContent(index);
+      },
+    );
   }
 
   Widget _buildCurrentPageContent(int index) {
-      final page = Provider.of<PageProvider>(context);
+    final page = Provider.of<PageProvider>(context);
     if (index == page.currentPageIndex) {
       if (index == 0) {
         return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Center(child: TextWidget(title: 'Select your School', size: 16.sp)),
-        Gap(30.h),
-        SelectSchoolBox(
-          isSelected: page.selectedSectionIndex == 0,
-          onTap: () => page.handleSection(0),
-          schoolTitle: 'Texas A&M University',
-        ),
-        Gap(15.h),
-        SelectSchoolBox(
-          onTap: () => page.handleSection(1),
-          isSelected: page.selectedSectionIndex == 1,
-          schoolTitle: 'Other School',
-        ),
-        const Spacer(flex: 2,),
-        DefaultButton(
-          text: 'Next',
-          onPressed: () => page.selectedSectionIndex == 1 ?  Navigator.push(context, MaterialPageRoute(builder: (context) => const YourSchool())) : page.handleNextButton(),
-        ),
-        const Spacer(),
-      ],
-    );
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(child: TextWidget(title: 'Select your School', size: 16.sp)),
+            Gap(30.h),
+            SelectSchoolBox(
+              isSelected: page.selectedSectionIndex == 0,
+              onTap: () => page.handleSection(0),
+              schoolTitle: 'Texas A&M University',
+            ),
+            Gap(15.h),
+            SelectSchoolBox(
+              onTap: () => page.handleSection(1),
+              isSelected: page.selectedSectionIndex == 1,
+              schoolTitle: 'Other School',
+            ),
+            const Spacer(flex: 2,),
+            DefaultButton(
+              text: 'Next',
+              onPressed: () {
+                if (page.selectedSectionIndex == 1) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const YourSchool()));
+                } else {
+                  page.handleNextButton();
+                }
+              },
+            ),
+            const Spacer(),
+          ],
+        );
       } else if (index == 1) {
-        return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Center(child: TextWidget(title: 'Student or an Organization', size: 16.sp)),
-        Gap(30.h),
-        SelectSchoolBox(
-          isSelected: page.selectedSectionIndex == 0,
-          onTap: () => page.handleSection(0),
-          schoolTitle: 'Student',
-        ),
-        Gap(15.h),
-        SelectSchoolBox(
-          onTap: () => page.handleSection(1),
-          isSelected: page.selectedSectionIndex == 1,
-          schoolTitle: 'Organization',
-        ),
-        const Spacer(flex: 2,),
-        DefaultButton(
-          text: 'Next',
-          onPressed: () => page.selectedSectionIndex == 1 ? PageView.builder(itemBuilder: ((context, index) => Column(
+        if (isStudentSelected) {
+          return StudentForm(
+            onPressed: () => page.handleNextButton(),
+          );
+        } else {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text("data"),
-              DefaultButton(text: "text", onPressed: () => page.handleNextButton())
+              Center(child: TextWidget(title: 'Organization Form 1', size: 16.sp)),
+              const Spacer(flex: 2,),
+              DefaultButton(
+                text: 'Next',
+                onPressed: () => page.pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.ease),
+              ),
+              const Spacer(),
             ],
-          ))) :page.handleNextButton(),
-        ),
-        const Spacer(),
-      ],
-    );
-      } 
+          );
+        }
+      } else if (index == 2) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(child: TextWidget(title: 'Organization Form 2', size: 16.sp)),
+            const Spacer(flex: 2,),
+            DefaultButton(
+              text: 'Next',
+              onPressed: () => page.handleNextButton(),
+            ),
+            const Spacer(),
+          ],
+        );
+      }
     }
-    return const StudentForm();
+    return const SizedBox();
   }
 }
+
 
 
 class SelectSchoolBox extends StatelessWidget {

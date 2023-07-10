@@ -7,7 +7,8 @@ import '../../../widgets/default_button.dart';
 import '../../../widgets/text_widget.dart';
 
 class StudentForm extends StatelessWidget {
-  const StudentForm({super.key});
+  final VoidCallback onPressed;
+  const StudentForm({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
