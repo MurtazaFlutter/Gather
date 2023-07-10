@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:gather_app/screens/profilescreen/screens/settings_screen.dart';
+import 'package:gather_app/screens/profile/screens/settings_screen.dart';
 import 'package:gather_app/utils/colors.dart';
 import 'package:gather_app/widgets/text_widget.dart';
 

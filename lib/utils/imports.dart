@@ -3,8 +3,7 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:gather_app/widgets/text_widget.dart';
 export '../../utils/colors.dart';
 export 'package:gap/gap.dart';
-export 'package:gather_app/screens/favourite_screen.dart';
-export 'package:gather_app/screens/profilescreen/screens/profile_screen.dart';
-export 'package:gather_app/screens/search_screen.dart';
-export 'package:gather_app/screens/homescreen/screens/home_screen.dart';
-
+export 'package:gather_app/screens/favorites/screens/favourite_screen.dart';
+export 'package:gather_app/screens/profile/screens/profile_screen.dart';
+export 'package:gather_app/screens/searchscreen/screens/search_screen.dart';
+export 'package:gather_app/screens/home/screens/home_screen.dart';

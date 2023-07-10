@@ -6,7 +6,7 @@ import '../../../utils/colors.dart';
 import '../../../widgets/custom_text_field.dart';
 import '../../../widgets/default_button.dart';
 import '../../../widgets/text_widget.dart';
-import '../../mainscreen/main_screen.dart';
+import '../../main/screens/main_screen.dart';
 
 class LoginTab extends StatelessWidget {
   const LoginTab({

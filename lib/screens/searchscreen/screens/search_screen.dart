@@ -1,5 +1,5 @@
-import '../widgets/search_text_field.dart';
-import '../utils/imports.dart';
+import '../../../widgets/search_text_field.dart';
+import '../../../utils/imports.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen ({super.key});
@@ -23,7 +23,8 @@ class SearchScreen extends StatelessWidget {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
-                return Image.asset("assets/post.png");
+                return const Text("data");
+                //Image.asset("assets/post.png");
               })),
             ),
             //  Gap(20.h),

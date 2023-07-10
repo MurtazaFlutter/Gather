@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
-import '../../controllers/main_screen_notifier.dart';
-import '../../utils/imports.dart';
-import 'widgets/bottom_bar.dart';
+import '../../../controllers/main_screen_notifier.dart';
+import '../../../utils/imports.dart';
+import '../widgets/bottom_bar.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});

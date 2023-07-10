@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:gather_app/controllers/page_controller.dart';
-import 'package:gather_app/screens/authscreens/widgets/other_school.dart';
+import 'package:gather_app/screens/auth/widgets/other_school.dart';
 import 'package:gather_app/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/colors.dart';
