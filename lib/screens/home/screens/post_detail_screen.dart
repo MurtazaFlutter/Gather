@@ -25,7 +25,10 @@ class PostDetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Image.asset("assets/detail.png"),
+                Image.asset(
+                  "assets/detail.png",
+                  width: double.infinity,
+                ),
                 Padding(
                   padding: EdgeInsets.only(top: 20.h),
                   child: Row(
@@ -53,16 +56,33 @@ class PostDetailScreen extends StatelessWidget {
                           Image.asset("assets/LOGO 1.png"),
                           Column(
                             children: [
-                              TextWidget(title: "Happy Summer", size: 20.sp, weight: FontWeight.w700, color: Colors.white,),
-                              TextWidget(title: "H2024aggies", size: 16.sp, color: Colors.white,),
+                              TextWidget(
+                                title: "Happy Summer",
+                                size: 20.sp,
+                                weight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                              TextWidget(
+                                title: "H2024aggies",
+                                size: 16.sp,
+                                color: Colors.white,
+                              ),
                             ],
                           ),
-                           Row(
+                          Row(
                             children: [
-                              Icon(Icons.chat_bubble, color: Colors.white, size: 13.h,),
+                              Icon(
+                                Icons.chat_bubble,
+                                color: Colors.white,
+                                size: 13.h,
+                              ),
                               Gap(5.w),
-                              TextWidget(title: "125", size: 16.sp, color: Colors.white, weight: FontWeight.w900,),
-                              
+                              TextWidget(
+                                title: "125",
+                                size: 16.sp,
+                                color: Colors.white,
+                                weight: FontWeight.w900,
+                              ),
                             ],
                           )
                         ],
@@ -74,7 +94,12 @@ class PostDetailScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                       Gap(10.h),
-                      Center(child: TextWidget(title: "125 Comments", size: 16.sp, color: Colors.white,)),
+                      Center(
+                          child: TextWidget(
+                        title: "125 Comments",
+                        size: 16.sp,
+                        color: Colors.white,
+                      )),
                     ],
                   ),
                 ),
@@ -114,7 +139,7 @@ class PostDetailScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: 10.w, right: 10.w),
               child: const CustomTextField(hintText: "Add comment..."),
             ),
-             Gap(20.h),
+            Gap(20.h),
           ],
         ),
       ),

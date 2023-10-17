@@ -8,7 +8,8 @@ class HomeScreen extends StatefulWidget {
   HomeScreenState createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -38,7 +39,8 @@ class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMi
           TabBar(
             dividerColor: Colors.transparent,
             labelColor: Colors.black,
-            labelStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            labelStyle:
+                const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             controller: _tabController,
             tabs: const [
               Tab(text: 'Involved'),
@@ -48,10 +50,9 @@ class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMi
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children:  const [
-              InvolvedPosts(),
-              InvolvedPosts(),
-               
+              children: const [
+                InvolvedPosts(),
+                InvolvedPosts(),
               ],
             ),
           ),
@@ -70,46 +71,55 @@ class InvolvedPosts extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: ((context) => const PostDetailScreen())));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: ((context) => const PostDetailScreen())));
       },
       child: ListView.builder(
-       physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: ((context, index) {
-        return Column(
-           mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-           Gap(30.h),
-             Image.asset("assets/imagepost.png", width: 375, ),
-            Row(
+          physics: const BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: ((context, index) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Gap(30.h),
+                Image.asset(
+                  "assets/imagepost.png",
+                  width: 375,
+                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset("assets/Group 6.png", height: 44.h, width: 44.w,),
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextWidget(title: 'Happy Summer', size: 12.sp),
-                        TextWidget(title: 'Happy Summer', size: 12.sp),
-                        
+                        Image.asset(
+                          "assets/Group 6.png",
+                          height: 44.h,
+                          width: 44.w,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextWidget(title: 'Happy Summer', size: 12.sp),
+                            TextWidget(title: 'Happy Summer', size: 12.sp),
+                          ],
+                        ),
+                        const Icon(Icons.more_vert),
                       ],
                     ),
-                    const Icon(Icons.more_vert),
+                    const Icon(Icons.chat),
+                    const Text("22")
                   ],
                 ),
-                const Icon(Icons.chat),
-                const Text("22")
               ],
-            ),
-          ],
-        );
-      })),
+            );
+          })),
     );
   }
 }
