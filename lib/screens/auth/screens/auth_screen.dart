@@ -1,4 +1,5 @@
 import 'package:flutter_svg/svg.dart';
+
 import '../../../utils/imports.dart';
 import '../widgets/other_school.dart';
 import 'login_tab_screen.dart';
@@ -10,7 +11,8 @@ class AuthScreen extends StatefulWidget {
   State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateMixin {
+class _AuthScreenState extends State<AuthScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -72,14 +74,11 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                   ),
                 ],
               ),
-            Gap(20.h),
+              Gap(20.h),
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
-                  children: const [
-                  LoginTab(),
-                  SignUp()
-                  ],
+                  children: const [LoginTab(), SignUp()],
                 ),
               ),
             ],
@@ -98,6 +97,7 @@ class SignUp extends StatefulWidget {
   @override
   State<SignUp> createState() => _SignUpState();
 }
+
 class _SignUpState extends State<SignUp> {
   bool isStudentSelected = true;
 
@@ -134,12 +134,17 @@ class _SignUpState extends State<SignUp> {
               isSelected: page.selectedSectionIndex == 1,
               schoolTitle: 'Other School',
             ),
-            const Spacer(flex: 2,),
+            const Spacer(
+              flex: 2,
+            ),
             DefaultButton(
               text: 'Next',
               onPressed: () {
                 if (page.selectedSectionIndex == 1) {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const YourSchool()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const YourSchool()));
                 } else {
                   page.handleNextButton();
                 }
@@ -158,11 +163,17 @@ class _SignUpState extends State<SignUp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Center(child: TextWidget(title: 'Organization Form 1', size: 16.sp)),
-              const Spacer(flex: 2,),
+              Center(
+                child: TextWidget(title: 'Organization Form 1', size: 16.sp),
+              ),
+              const Spacer(
+                flex: 2,
+              ),
               DefaultButton(
                 text: 'Next',
-                onPressed: () => page.pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.ease),
+                onPressed: () => page.pageController.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.ease),
               ),
               const Spacer(),
             ],
@@ -173,8 +184,11 @@ class _SignUpState extends State<SignUp> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(child: TextWidget(title: 'Organization Form 2', size: 16.sp)),
-            const Spacer(flex: 2,),
+            Center(
+                child: TextWidget(title: 'Organization Form 2', size: 16.sp)),
+            const Spacer(
+              flex: 2,
+            ),
             DefaultButton(
               text: 'Next',
               onPressed: () => page.handleNextButton(),
@@ -188,14 +202,13 @@ class _SignUpState extends State<SignUp> {
   }
 }
 
-
-
 class SelectSchoolBox extends StatelessWidget {
   final String schoolTitle;
   final bool isSelected;
   final VoidCallback onTap;
 
-  const SelectSchoolBox({super.key, 
+  const SelectSchoolBox({
+    super.key,
     required this.schoolTitle,
     required this.isSelected,
     required this.onTap,
@@ -212,10 +225,14 @@ class SelectSchoolBox extends StatelessWidget {
             color: isSelected ? kDefaultColor : kBlackColor,
           ),
           borderRadius: BorderRadius.circular(30.r),
-          color: isSelected ? kDefaultColor: Colors.transparent,
+          color: isSelected ? kDefaultColor : Colors.transparent,
         ),
         child: Center(
-          child: TextWidget(title: schoolTitle, size: 16.sp, color: isSelected ? Colors.white : kBlackColor,),
+          child: TextWidget(
+            title: schoolTitle,
+            size: 16.sp,
+            color: isSelected ? Colors.white : kBlackColor,
+          ),
         ),
       ),
     );
